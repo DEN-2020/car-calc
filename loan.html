@@ -2,101 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Auto Loan Calculator</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Car Loan Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- base styles (shared) -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- page-specific styles -->
+  <link rel="stylesheet" href="css/loan.css">
+
+  <script type="module" src="js/loan.js" defer></script>
 </head>
+<body class="loan-page">
 
-<body>
-
-<div class="container">
-  <h1>Auto Loan / Financing Calculator</h1>
-
-  <!-- ===========================
-        BASIC LOAN DATA
-  ============================ -->
-  <div class="section-card">
-    <h2>Loan Basics</h2>
-
-    <div class="field">
-      <label>Car Price (€)</label>
-      <input id="loan_price" type="number" placeholder="20000">
-    </div>
-
-    <div class="field">
-      <label>Down Payment (€)</label>
-      <input id="loan_down" type="number" placeholder="2000">
-    </div>
-
-    <div class="field">
-      <label>Loan Term</label>
-      <select id="loan_term_type">
-        <option value="years">Years</option>
-        <option value="months">Months</option>
-      </select>
-      <input id="loan_term_value" type="number" placeholder="5">
-    </div>
-
-    <div class="field">
-      <label>Interest Rate (% per year)</label>
-      <input id="loan_rate" type="number" placeholder="5">
-    </div>
-
-    <div class="field">
-      <label>Balloon Payment (€)</label>
-      <input id="loan_balloon" type="number" placeholder="0">
-    </div>
+<header class="app-header">
+  <div class="logo-wrap">
+    <div class="logo">CarCalc</div>
   </div>
 
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="loan.html" class="active">Loan</a>
+    <!-- потом добавим ещё ссылки (tax, insurance, fuel, summary) -->
+  </nav>
+</header>
 
-  <!-- ===========================
-        EXTRA FEES
-  ============================ -->
-  <div class="section-card">
-    <h2>Extra Fees</h2>
+<main class="app-main">
 
-    <div id="fee-list"></div>
+  <!-- MAIN LOAN BLOCK -->
+  <section class="card">
+    <h1>Car Loan / Financing</h1>
+    <p class="card-subtitle">
+      Calculate monthly payment, total interest and real loan cost including fees.
+    </p>
 
-    <button class="small-btn" id="add-fee">+ Add Fee</button>
-  </div>
+    <form id="loan-form" class="form">
 
+      <div class="form-row">
+        <label for="loan_price">Car price (€)</label>
+        <input id="loan_price" type="number" min="0" step="100" placeholder="20000">
+      </div>
 
-  <!-- ===========================
-        EXTRA MONTHLY PAYMENT
-  ============================ -->
-  <div class="section-card">
-    <h2>Optional Extra Payment</h2>
+      <div class="form-row">
+        <label for="loan_down">Down payment (€)</label>
+        <input id="loan_down" type="number" min="0" step="100" placeholder="2000">
+      </div>
 
-    <div class="field">
-      <label>Extra Monthly Payment (€)</label>
-      <input id="extra_monthly" type="number" placeholder="0">
+      <div class="form-row">
+        <label for="loan_trade">Trade-in value (€)</label>
+        <input id="loan_trade" type="number" min="0" step="100" placeholder="0">
+      </div>
+
+      <div class="form-row">
+        <label for="loan_fees">Extra fees (reg, delivery, etc) (€)</label>
+        <input id="loan_fees" type="number" min="0" step="50" placeholder="0">
+      </div>
+
+      <div class="form-row">
+        <label for="loan_years">Loan term (years)</label>
+        <input id="loan_years" type="number" min="1" max="10" step="1" placeholder="5">
+      </div>
+
+      <div class="form-row">
+        <label for="loan_rate">Interest rate (% per year)</label>
+        <input id="loan_rate" type="number" min="0" step="0.1" placeholder="5.0">
+      </div>
+
+      <div class="form-row">
+        <label for="loan_type">Payment type</label>
+        <select id="loan_type">
+          <option value="annuity" selected>Annuity (same monthly payment)</option>
+          <option value="simple">Simple (no interest, debug mode)</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" id="loan_calc_btn">Calculate</button>
+      </div>
+
+    </form>
+  </section>
+
+  <!-- RESULT BLOCK -->
+  <section class="card card--compact">
+    <h2>Loan summary</h2>
+    <div id="loan-result" class="result-box">
+      <p>Enter values and press <b>Calculate</b>.</p>
     </div>
+  </section>
 
-    <div class="field">
-      <label>Start Extra Payment After (months)</label>
-      <input id="extra_start" type="number" placeholder="0">
-    </div>
-  </div>
+</main>
 
-
-  <!-- ===========================
-        RESULTS
-  ============================ -->
-  <div class="section-card">
-    <h2>Results</h2>
-
-    <div class="result-box">
-      <p>Monthly Payment: <span id="res_monthly">0</span> €</p>
-      <p>Total Interest: <span id="res_interest">0</span> €</p>
-      <p>Total Financing Cost: <span id="res_total_cost">0</span> €</p>
-      <p>Effective APR: <span id="res_apr">0</span> %</p>
-      <p>Interest Saved (extra payments): <span id="res_saved">0</span> €</p>
-    </div>
-  </div>
-
-</div>
-
-<script src="js/calculator.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/main.js"></script>
 </body>
 </html>
