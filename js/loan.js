@@ -13,26 +13,25 @@ function formatMoney(x) {
 }
 
 // ---------- main calc ----------
-export function calcLoan() {
+function calcLoan() {
   const price = getNum("loan_price");
   const down = getNum("loan_down");
-  const trade = getNum("loan_trade");
+  const trade = getNum("loan_trade"); // если поля нет — вернётся 0
   const fees = getNum("loan_fees");
   const years = getNum("loan_years");
   const rateYear = getNum("loan_rate");
-  const type = (document.getElementById("loan_type") || {}).value || "annuity";
+  const typeEl = document.getElementById("loan_type");
+  const type = typeEl ? typeEl.value : "annuity";
 
   const resultBox = document.getElementById("loan-result");
   if (!resultBox) return;
 
-  // базовая валидация
   if (price <= 0 || years <= 0) {
     resultBox.innerHTML = `<p>Please fill at least <b>car price</b> and <b>loan term</b>.</p>`;
     return;
   }
 
-  // сколько реально идёт в кредит
-  // net = цена - down - trade + fees, но не меньше 0
+  // сколько реально идёт в кредит: price - down - trade + fees
   let principal = price - down - trade + fees;
   if (principal < 0) principal = 0;
 
@@ -44,23 +43,18 @@ export function calcLoan() {
   let totalInterest = 0;
 
   if (type === "annuity" && rMonth > 0) {
-    // стандартная аннуитетная формула
     const pow = Math.pow(1 + rMonth, nMonths);
     monthly = principal * rMonth * pow / (pow - 1);
     totalLoanPaid = monthly * nMonths;
     totalInterest = totalLoanPaid - principal;
   } else {
-    // simple: без процентов, для отладки/нулевой ставки
     monthly = principal / nMonths;
     totalLoanPaid = monthly * nMonths;
     totalInterest = 0;
   }
 
-  // сколько ты реально вытащишь из кармана за всё время:
-  // начальный кэш (down + fees) + все платежи по кредиту
   const totalCash = down + fees + totalLoanPaid;
 
-  // ---------- вывод ----------
   resultBox.innerHTML = `
     <div class="result-box">
 
@@ -103,7 +97,7 @@ export function calcLoan() {
     </div>
   `;
 
-  // — опционально — сохраняем в localStorage для future summary page —
+  // сохраняем для summary
   try {
     const summary = {
       price,
@@ -121,16 +115,16 @@ export function calcLoan() {
     };
     localStorage.setItem("carcalc_loan_summary", JSON.stringify(summary));
   } catch {
-    // ничего страшного, просто не сохранилось
+    // ignore
   }
+
+  // сохраняем форму
+  saveFormState();
 }
 
 // ---------- wiring ----------
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("loan-form");
-  const btn = document.getElementById("loan_calc_btn");
-
-  // загрузим сохранённые значения, если есть
+  // грузим сохранённые значения в поля
   try {
     const raw = localStorage.getItem("carcalc_loan_form");
     if (raw) {
@@ -143,19 +137,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   } catch {
-    // игнор
+    // ignore
   }
 
-  // реакция на кнопку
+  // вешаем кнопку
+  const btn = document.getElementById("loan_calc_btn");
   if (btn) {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       calcLoan();
-      saveFormState();
     });
   }
 
-  // авто-пересчёт при изменении полей (опционально)
+  // опционально — авто-пересчёт при вводе
+  const form = document.getElementById("loan-form");
   if (form) {
     form.addEventListener("input", () => {
       saveFormState();
