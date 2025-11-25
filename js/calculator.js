@@ -1,34 +1,51 @@
-// ===============================
-// LOAN / FINANCING CALCULATOR
-// ===============================
+// =======================
+// Pure Loan Math Module
+// =======================
 
-export function calcLoan({ price, down, years, rate }) {
-    price = Number(price);
-    down = Number(down);
-    years = Number(years);
-    rate = Number(rate);
+export function calculateLoan(data) {
+  const {
+    price, down, rate, termMonths, balloon,
+    fees, extraMonthly, extraStart
+  } = data;
 
-    const loanAmount = price - down;
-    if (loanAmount <= 0) {
-        return {
-            monthly: 0,
-            interest: 0,
-            total: 0
-        };
-    }
+  const principal = price - down + fees;
+  const monthlyRate = rate / 100 / 12;
 
-    const months = years * 12;
-    const monthlyRate = rate / 100 / 12;
+  // Base monthly payment formula (without balloon)
+  const baseMonthly = (monthlyRate * principal) /
+    (1 - Math.pow(1 + monthlyRate, -termMonths));
 
-    const monthlyPayment =
-        (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+  // Balloon adjusts final payment
+  const balloonPV = balloon / Math.pow(1 + monthlyRate, termMonths);
 
-    const totalPaid = monthlyPayment * months;
-    const totalInterest = totalPaid - loanAmount;
+  const monthly = baseMonthly - (monthlyRate * balloonPV);
 
-    return {
-        monthly: monthlyPayment,
-        interest: totalInterest,
-        total: totalPaid
-    };
+  let totalInterest = 0;
+  let remaining = principal;
+  let saved = 0;
+
+  for (let m = 1; m <= termMonths; m++) {
+    const interest = remaining * monthlyRate;
+    let payment = monthly;
+
+    if (m >= extraStart)
+      payment += extraMonthly;
+
+    const principalPay = payment - interest;
+    remaining -= principalPay;
+
+    totalInterest += interest;
+
+    if (remaining <= 0) break;
+  }
+
+  const totalCost = principal + totalInterest;
+
+  return {
+    monthly: monthly.toFixed(2),
+    totalInterest: totalInterest.toFixed(2),
+    totalCost: totalCost.toFixed(2),
+    apr: rate.toFixed(2),
+    saved: saved.toFixed(2)
+  };
 }
