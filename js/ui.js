@@ -30,3 +30,23 @@ export function initLoanUI() {
 
     update();
 }
+// =======================
+// Dynamic UI Controls
+// =======================
+
+export function addFeeRow() {
+  const container = document.getElementById("fee-list");
+
+  const row = document.createElement("div");
+  row.className = "field-row";
+
+  row.innerHTML = `
+      <input type="text" class="fee-name" placeholder="Fee name">
+      <input type="number" class="fee-value" placeholder="Amount €">
+      <button class="remove-fee">✖</button>
+  `;
+
+  row.querySelector(".remove-fee").onclick = () => row.remove();
+
+  container.appendChild(row);
+}
