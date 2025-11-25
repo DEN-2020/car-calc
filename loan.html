@@ -5,73 +5,65 @@
   <title>Car Loan Calculator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- base styles (shared) -->
   <link rel="stylesheet" href="css/main.css">
-  <!-- page-specific styles -->
   <link rel="stylesheet" href="css/loan.css">
 
-  <script type="module" src="js/loan.js" defer></script>
+  <script src="js/loan.js" defer></script>
 </head>
 <body class="loan-page">
 
 <header class="app-header">
-  <div class="logo-wrap">
-    <div class="logo">CarCalc</div>
-  </div>
+  <div class="logo-wrap"><div class="logo">CarCalc</div></div>
 
   <nav class="nav">
     <a href="index.html">Home</a>
     <a href="loan.html" class="active">Loan</a>
-    <!-- потом добавим ещё ссылки (tax, insurance, fuel, summary) -->
   </nav>
 </header>
 
 <main class="app-main">
 
-  <!-- MAIN LOAN BLOCK -->
   <section class="card">
     <h1>Car Loan / Financing</h1>
-    <p class="card-subtitle">
-      Calculate monthly payment, total interest and real loan cost including fees.
-    </p>
+    <p class="card-subtitle">Calculate payments, total interest and real cost.</p>
 
-    <form id="loan-form" class="form">
+    <form id="loan-form">
 
       <div class="form-row">
         <label for="loan_price">Car price (€)</label>
-        <input id="loan_price" type="number" min="0" step="100" placeholder="20000">
+        <input id="loan_price" type="number" step="100" placeholder="20000">
       </div>
 
       <div class="form-row">
         <label for="loan_down">Down payment (€)</label>
-        <input id="loan_down" type="number" min="0" step="100" placeholder="2000">
+        <input id="loan_down" type="number" step="100" placeholder="2000">
       </div>
 
       <div class="form-row">
         <label for="loan_trade">Trade-in value (€)</label>
-        <input id="loan_trade" type="number" min="0" step="100" placeholder="0">
+        <input id="loan_trade" type="number" step="100" placeholder="0">
       </div>
 
       <div class="form-row">
-        <label for="loan_fees">Extra fees (reg, delivery, etc) (€)</label>
-        <input id="loan_fees" type="number" min="0" step="50" placeholder="0">
+        <label for="loan_fees">Extra fees (€)</label>
+        <input id="loan_fees" type="number" step="50" placeholder="0">
       </div>
 
       <div class="form-row">
         <label for="loan_years">Loan term (years)</label>
-        <input id="loan_years" type="number" min="1" max="10" step="1" placeholder="5">
+        <input id="loan_years" type="number" min="1" max="10" placeholder="5">
       </div>
 
       <div class="form-row">
         <label for="loan_rate">Interest rate (% per year)</label>
-        <input id="loan_rate" type="number" min="0" step="0.1" placeholder="5.0">
+        <input id="loan_rate" type="number" step="0.1" placeholder="5.0">
       </div>
 
       <div class="form-row">
         <label for="loan_type">Payment type</label>
         <select id="loan_type">
-          <option value="annuity" selected>Annuity (same monthly payment)</option>
-          <option value="simple">Simple (no interest, debug mode)</option>
+          <option value="annuity" selected>Annuity</option>
+          <option value="simple">Simple</option>
         </select>
       </div>
 
@@ -82,7 +74,6 @@
     </form>
   </section>
 
-  <!-- RESULT BLOCK -->
   <section class="card card--compact">
     <h2>Loan summary</h2>
     <div id="loan-result" class="result-box">
@@ -91,6 +82,5 @@
   </section>
 
 </main>
-
 </body>
 </html>
