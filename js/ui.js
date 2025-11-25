@@ -1,21 +1,32 @@
-export function inputRow(label, id, suffix = "", value = "") {
-  const div = document.createElement("div");
-  div.className = "row";
-  div.innerHTML = `
-    <label for="${id}">${label}</label>
-    <input id="${id}" type="number" step="0.01" value="${value}">
-    <span class="suffix">${suffix}</span>
-  `;
-  return div;
-}
+import { calcLoan } from "./calculator.js";
 
-export function customRow(id) {
-  const div = document.createElement("div");
-  div.className = "row";
-  div.innerHTML = `
-    <input id="name-${id}" placeholder="Name">
-    <input id="value-${id}" type="number" step="0.01" placeholder="€/year">
-    <button class="remove" data-id="${id}">×</button>
-  `;
-  return div;
+export function initLoanUI() {
+    const priceEl = document.getElementById("loan_price");
+    const downEl = document.getElementById("loan_down");
+    const yearsEl = document.getElementById("loan_years");
+    const rateEl = document.getElementById("loan_rate");
+
+    const outMonthly = document.getElementById("loan_monthly");
+    const outInterest = document.getElementById("loan_interest");
+    const outTotal = document.getElementById("loan_total");
+
+    function update() {
+        const res = calcLoan({
+            price: priceEl.value,
+            down: downEl.value,
+            years: yearsEl.value,
+            rate: rateEl.value
+        });
+
+        outMonthly.textContent = res.monthly.toFixed(2);
+        outInterest.textContent = res.interest.toFixed(2);
+        outTotal.textContent = res.total.toFixed(2);
+    }
+
+    // Auto-update on input
+    [priceEl, downEl, yearsEl, rateEl].forEach(el =>
+        el.addEventListener("input", update)
+    );
+
+    update();
 }
