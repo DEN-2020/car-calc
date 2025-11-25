@@ -1,0 +1,76 @@
+/* Loan page specific tweaks */
+
+.loan-page .app-main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* выравниваем форму и результат по центру внутри карточки */
+.loan-page .card .form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.loan-page .card .form-row {
+  justify-content: flex-start;
+}
+
+/* компактный сабтайтл под заголовком */
+.card-subtitle {
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* блок с результатом */
+.result-box {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.result-label {
+  color: var(--text-muted);
+}
+
+.result-value {
+  font-weight: 600;
+}
+
+/* подсветка важных строк */
+.result-value.main {
+  font-size: 18px;
+}
+
+.result-value.green {
+  color: #00e676;
+}
+
+.result-value.orange {
+  color: #ffb74d;
+}
+
+/* маленький note внизу */
+.result-note {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* кнопка calculate — центрируем, не тянем на всю ширину */
+#loan-form .form-actions {
+  display: flex;
+  justify-content: center;
+}
+
+#loan-form .form-actions button {
+  min-width: 180px;
+}
