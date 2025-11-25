@@ -1,29 +1,86 @@
-<div class="section-card" id="loan-section">
-  <h2>Loan / Financing</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="field">
-    <label>Car Price (€)</label>
-    <input id="loan_price" type="number" placeholder="20000">
-  </div>
+<head>
+  <meta charset="UTF-8" />
+  <title>Car Cost Calculator</title>
 
-  <div class="field">
-    <label>Down Payment (€)</label>
-    <input id="loan_down" type="number" placeholder="2000">
-  </div>
+  <!-- Main global styles -->
+  <link rel="stylesheet" href="css/main.css">
 
-  <div class="field">
-    <label>Loan Term (years)</label>
-    <input id="loan_years" type="number" placeholder="5">
-  </div>
+  <!-- Section-specific styles -->
+  <link rel="stylesheet" href="css/loan.css">
+</head>
 
-  <div class="field">
-    <label>Interest Rate (% per year)</label>
-    <input id="loan_rate" type="number" placeholder="5">
-  </div>
+<body>
 
-  <div class="result-box">
-    <p>Monthly payment: <span id="loan_monthly">0</span> €</p>
-    <p>Total interest: <span id="loan_interest">0</span> €</p>
-    <p>Total loan cost: <span id="loan_total">0</span> €</p>
-  </div>
-</div>
+  <!-- ============================
+          NAVIGATION
+  ============================ -->
+  <header class="app-header">
+    <div class="logo-wrap">
+      <div class="logo">CarCalc</div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="active">Loan</a>
+      <a href="running-costs.html">Running Costs</a>
+      <a href="summary.html">Summary</a>
+    </nav>
+
+    <div id="offline-indicator" class="status-indicator offline">Offline</div>
+  </header>
+
+  <!-- ============================
+            MAIN CONTENT
+  ============================ -->
+  <main class="app-main">
+    <div class="card">
+
+      <h1>Car Loan / Financing</h1>
+
+      <form id="loan-form">
+
+        <div class="form-row">
+          <label for="loan_price">Car Price (€)</label>
+          <input type="number" id="loan_price" placeholder="20000">
+        </div>
+
+        <div class="form-row">
+          <label for="loan_down">Down Payment (€)</label>
+          <input type="number" id="loan_down" placeholder="2000">
+        </div>
+
+        <div class="form-row">
+          <label for="loan_years">Loan Term (years)</label>
+          <input type="number" id="loan_years" placeholder="5">
+        </div>
+
+        <div class="form-row">
+          <label for="loan_rate">Interest Rate (% / year)</label>
+          <input type="number" id="loan_rate" placeholder="5">
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="loan_calc_btn">Calculate</button>
+        </div>
+
+      </form>
+
+      <div class="result-box">
+        <p>Monthly payment: <span id="loan_monthly">0</span> €</p>
+        <p>Total interest: <span id="loan_interest">0</span> €</p>
+        <p>Total loan cost: <span id="loan_total">0</span> €</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============================
+              SCRIPTS
+  ============================ -->
+  <script type="module" src="js/loan.js"></script>
+
+</body>
+
+</html>
