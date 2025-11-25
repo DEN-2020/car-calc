@@ -1,4 +1,4 @@
-/* Loan page specific tweaks */
+/* Loan page */
 
 .loan-page .app-main {
   max-width: 880px;
@@ -6,35 +6,61 @@
   padding: 1.5rem 1rem;
 }
 
-/* выравниваем форму и результат по центру внутри карточки */
-.loan-page .card .form {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.loan-page .card .form-row {
-  justify-content: flex-start;
-}
-
-/* компактный сабтайтл под заголовком */
 .card-subtitle {
   margin: 0 0 14px;
   font-size: 13px;
   color: var(--text-muted);
 }
 
-/* блок с результатом */
+/* form rows */
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.form-row label {
+  width: 180px;
+  color: var(--text-muted);
+}
+
+.form-row input,
+.form-row select {
+  flex: 1;
+  padding: 8px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #fff;
+}
+
+/* calculate button */
+#loan-form .form-actions {
+  display: flex;
+  justify-content: center;
+}
+
+#loan-form .form-actions button {
+  background: #4bb8ff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: #000;
+}
+
+/* result block */
 .result-box {
   display: grid;
-  gap: 8px;
+  gap: 10px;
   font-size: 14px;
 }
 
 .result-row {
   display: flex;
   justify-content: space-between;
-  gap: 8px;
 }
 
 .result-label {
@@ -45,32 +71,15 @@
   font-weight: 600;
 }
 
-/* подсветка важных строк */
+.result-value.green { color: #00e676; }
+.result-value.orange { color: #ffb74d; }
+
 .result-value.main {
   font-size: 18px;
 }
 
-.result-value.green {
-  color: #00e676;
-}
-
-.result-value.orange {
-  color: #ffb74d;
-}
-
-/* маленький note внизу */
 .result-note {
   margin-top: 10px;
   font-size: 11px;
   color: var(--text-muted);
-}
-
-/* кнопка calculate — центрируем, не тянем на всю ширину */
-#loan-form .form-actions {
-  display: flex;
-  justify-content: center;
-}
-
-#loan-form .form-actions button {
-  min-width: 180px;
 }
