@@ -54,3 +54,55 @@ body {
   margin-bottom: 8px;
   font-size: 16px;
 }
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section-card {
+  background: #111;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  border: 1px solid #333;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.field label {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+.field input,
+.field select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+button {
+  padding: 10px 18px;
+  background: #4bb8ff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.result-box {
+  margin-top: 20px;
+  padding: 12px;
+  background: #181818;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
