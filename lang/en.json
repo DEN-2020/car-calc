@@ -1,5 +1,10 @@
 {
     "app_title": "Car Loan Calculator",
+
+    "menu_theme": "Theme",
+    "menu_language": "Language",
+    "install_app": "Install App",
+
     "loan_section": "Loan Calculation",
     "car_price": "Car price",
     "down_payment": "Down payment",
@@ -8,9 +13,15 @@
     "loan_months": "Loan term (months)",
     "interest_rate": "Interest rate (yearly, %)",
     "loan_type": "Loan type",
+    "loan_type_annuity": "Annuity",
+    "loan_type_diff": "Differentiated",
+
     "include_fees": "Include one-time fees in loan?",
-    "bank_fee": "Bank fee",
-    "dealer_fee": "Dealer fee",
+    "include_fees_no": "No — pay separately",
+    "include_fees_yes": "Yes — add to loan amount",
+
+    "bank_fee": "Bank processing fee",
+    "dealer_fee": "Dealer processing fee",
     "delivery_fee": "Delivery fee",
     "service_fee": "Service center fee",
 
@@ -19,6 +30,15 @@
     "extra_section": "Extra expenses",
     "extra_enable": "Include extra expenses",
 
+    "extra_tax": "Tax",
+    "extra_insurance": "Insurance",
+    "extra_service": "Service / Maintenance",
+    "extra_other": "Other expenses",
+
+    "period_year": "Yearly",
+    "period_month": "Monthly",
+    "period_once": "Once",
+
     "custom_section": "Custom expenses",
     "custom_enable": "Add custom items",
     "custom_add": "+ Add expense",
@@ -26,6 +46,12 @@
     "final_section": "Final Calculation",
     "btn_calc_all": "Calculate all",
     "total": "TOTAL",
+    "total_daily": "Per day",
+    "total_monthly": "Per month",
+    "total_yearly": "Per year",
+    "total_period": "Total for loan period",
+    "total_after": "After loan repayment",
 
-    "footer_rights": "All rights reserved"
+    "footer_rights": "All rights reserved",
+    "footer_year": "©"
 }
