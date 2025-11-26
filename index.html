@@ -4,298 +4,281 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title data-i18n="title">Car Cost Calculator</title>
+    <title data-i18n="app_title">Car Loan Calculator</title>
 
-    <!-- PWA -->
+    <!-- === PWA CORE === -->
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#0d6efd" />
     <meta name="theme-color" content="#0d6efd" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)">
     <meta name="color-scheme" content="light dark">
-    <!-- iOS PWA meta -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="CarCalc Pro">
 
-<link rel="apple-touch-icon" href="icons/icon-192.png">
-<link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
-<!-- iPhone 5/SE -->
-<link rel="apple-touch-startup-image"
-      href="splash/splash-640x1136.png"
-      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPhone 6/7/8/SE2/SE3 -->
-<link rel="apple-touch-startup-image"
-      href="splash/splash-750x1334.png"
-      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPhone XR/11 -->
-<link rel="apple-touch-startup-image"
-      href="splash/splash-828x1792.png"
-      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPhone X/XS/11 Pro -->
-<link rel="apple-touch-startup-image"
-      href="splash/splash-1125x2436.png"
-      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-
-<!-- iPhone XS Max/11 Pro Max -->
-<link rel="apple-touch-startup-image"
-      href="splash/splash-1242x2688.png"
-      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-
-<!-- iPad Mini/Air -->
-<link rel="apple-touch-startup-image"
-      href="splash/splash-1536x2048.png"
-      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPad Pro 10.5 -->
-<link rel="apple-touch-startup-image"
-      href="splash/splash-1668x2224.png"
-      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPad Pro 11 -->
-<link rel="apple-touch-startup-image"
-      href="splash/splash-1668x2388.png"
-      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPad Pro 12.9 -->
-<link rel="apple-touch-startup-image"
-      href="splash/splash-2048x2732.png"
-      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <script>
         if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("./sw.js");
+            navigator.serviceWorker.register("sw.js");
         }
     </script>
 
-    <!-- Styles -->
+    <!-- iPhone 5/SE -->
+<link rel="apple-touch-startup-image" href="splash/splash-640x1136.png"
+      media="(device-width: 320px) and (device-height: 568px)
+      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPhone 6/7/8/SE2/SE3 -->
+<link rel="apple-touch-startup-image" href="splash/splash-750x1334.png"
+      media="(device-width: 375px) and (device-height: 667px)
+      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPhone XR / 11 -->
+<link rel="apple-touch-startup-image" href="splash/splash-828x1792.png"
+      media="(device-width: 414px) and (device-height: 896px)
+      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPhone X / XS / 11 Pro -->
+<link rel="apple-touch-startup-image" href="splash/splash-1125x2436.png"
+      media="(device-width: 375px) and (device-height: 812px)
+      and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+
+<!-- iPhone XS Max / 11 Pro Max -->
+<link rel="apple-touch-startup-image" href="splash/splash-1242x2688.png"
+      media="(device-width: 414px) and (device-height: 896px)
+      and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+
+<!-- iPad Mini / iPad -->
+<link rel="apple-touch-startup-image" href="splash/splash-1536x2048.png"
+      media="(device-width: 768px) and (device-height: 1024px)
+      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPad Pro 10.5 -->
+<link rel="apple-touch-startup-image" href="splash/splash-1668x2224.png"
+      media="(device-width: 834px) and (device-height: 1112px)
+      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPad Pro 11 -->
+<link rel="apple-touch-startup-image" href="splash/splash-1668x2388.png"
+      media="(device-width: 834px) and (device-height: 1194px)
+      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPad Pro 12.9 -->
+<link rel="apple-touch-startup-image" href="splash/splash-2048x2732.png"
+      media="(device-width: 1024px) and (device-height: 1366px)
+      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+    <!-- === ICONS === -->
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png" />
+
+    <!-- === MAIN STYLES === -->
     <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
 
-<!-- ====================== HEADER ====================== -->
-<header class="header">
-    <div class="header-inner">
+<!-- ======================== HEADER ========================= -->
+<header class="topbar">
+    <h1 class="app-title" data-i18n="app_title">Car Loan Calculator</h1>
 
-        <h1 class="app-title" data-i18n="title">Car Cost Calculator</h1>
+    <div class="topbar-controls">
+        <!-- Theme toggle -->
+        <button id="theme_toggle" class="icon-btn" title="Theme">🌙</button>
 
-        <div class="header-actions">
+        <!-- Language select -->
+        <select id="lang_select" class="lang-select">
+            <option value="en">EN</option>
+            <option value="ru">RU</option>
+            <option value="fi">FI</option>
+        </select>
 
-            <!-- Language selector -->
-            <select id="lang_select" class="lang-select">
-                <option value="en" selected>EN</option>
-                <option value="ru">RU</option>
-                <option value="fi">FI</option>
-            </select>
-
-            <!-- Theme toggle -->
-            <button id="theme_toggle" class="theme-btn" title="Toggle theme">🌙</button>
-
-            <!-- PWA Install button -->
-            <button id="install_btn" class="install-btn hidden">
-                ⬇ Install
-            </button>
-        </div>
+        <!-- Install PWA button -->
+        <button id="install_btn" class="icon-btn" title="Install App" data-i18n="install_app">
+            📥
+        </button>
     </div>
 </header>
 
 <main class="container">
 
-<!-- ======================= LOAN ======================== -->
-<section class="card">
-    <h2 class="section-title" data-i18n="loan_calc">Loan Calculation</h2>
+    <!-- ======================== LOAN SECTION ========================= -->
+    <section class="card">
+        <h2 class="section-title" data-i18n="loan_section">Loan Calculation</h2>
 
-    <div class="form-row">
-        <label for="car_price" data-i18n="car_price">Car price</label>
-        <input type="number" id="car_price" />
-    </div>
-
-    <div class="form-row">
-        <label for="down_payment" data-i18n="down_payment">Down payment</label>
-        <input type="number" id="down_payment" />
-    </div>
-
-    <div class="form-row">
-        <label for="balloon_payment" data-i18n="balloon">Balloon payment</label>
-        <input type="number" id="balloon_payment" placeholder="0" />
-    </div>
-
-    <div class="form-grid">
-        <div class="form-col">
-            <label for="loan_years" data-i18n="loan_years">Years</label>
-            <input type="number" id="loan_years" />
+        <div class="form-row">
+            <label data-i18n="car_price"></label>
+            <input type="number" id="car_price" />
         </div>
 
-        <div class="form-col">
-            <label for="loan_months" data-i18n="loan_months">Months</label>
-            <input type="number" id="loan_months" />
+        <div class="form-row">
+            <label data-i18n="down_payment"></label>
+            <input type="number" id="down_payment" />
         </div>
-    </div>
 
-    <div class="form-row">
-        <label for="interest_rate" data-i18n="interest_rate">Interest rate (%)</label>
-        <input type="number" id="interest_rate" />
-    </div>
+        <div class="form-row">
+            <label data-i18n="balloon_payment"></label>
+            <input type="number" id="balloon_payment" placeholder="0" />
+        </div>
 
-    <div class="form-row">
-        <label data-i18n="loan_type">Loan type</label>
-        <select id="loan_type">
-            <option value="annuity" data-i18n="annuity">Annuity</option>
-            <option value="diff" data-i18n="diff">Differentiated</option>
-        </select>
-    </div>
+        <div class="form-grid">
+            <div class="form-col">
+                <label data-i18n="loan_years"></label>
+                <input type="number" id="loan_years" />
+            </div>
 
-    <div class="form-row">
-        <label data-i18n="include_fees">Include fees into loan?</label>
-        <select id="include_fees_to_loan">
-            <option value="no" data-i18n="no">No</option>
-            <option value="yes" data-i18n="yes">Yes</option>
-        </select>
-    </div>
+            <div class="form-col">
+                <label data-i18n="loan_months"></label>
+                <input type="number" id="loan_months" />
+            </div>
+        </div>
 
-    <div class="subsection-title" data-i18n="one_time_fees">One-time fees</div>
+        <div class="form-row">
+            <label data-i18n="interest_rate"></label>
+            <input type="number" id="interest_rate" />
+        </div>
 
-    <div class="form-row">
-        <label data-i18n="bank_fee">Bank fee</label>
-        <input type="number" id="bank_fee" />
-    </div>
-
-    <div class="form-row">
-        <label data-i18n="dealer_fee">Dealer fee</label>
-        <input type="number" id="dealer_fee" />
-    </div>
-
-    <div class="form-row">
-        <label data-i18n="delivery_fee">Delivery fee</label>
-        <input type="number" id="delivery_fee" />
-    </div>
-
-    <div class="form-row">
-        <label data-i18n="service_fee">Service fee</label>
-        <input type="number" id="service_fee" />
-    </div>
-
-    <button class="btn btn-primary" id="btn_calc_loan" data-i18n="calc_loan">Calculate loan</button>
-
-    <div id="loan_result" class="result-block hidden"></div>
-</section>
-
-
-<!-- ==================== EXTRA COSTS ==================== -->
-<section class="card">
-    <h2 class="section-title" data-i18n="extra_costs">Extra Costs</h2>
-
-    <label class="checkbox">
-        <input type="checkbox" id="extra_toggle" />
-        <span data-i18n="use_extra">Include extra costs</span>
-    </label>
-
-    <div id="extra_block" class="hidden">
-
-        <div class="extra-item-block">
-            <label data-i18n="tax">Tax</label>
-            <input type="number" id="tax_value" />
-            <select id="tax_type" class="expense-type">
-                <option value="year" data-i18n="yearly">Yearly</option>
-                <option value="month" data-i18n="monthly">Monthly</option>
-                <option value="once" data-i18n="once">Once</option>
+        <div class="form-row">
+            <label data-i18n="loan_type"></label>
+            <select id="loan_type">
+                <option value="annuity" data-i18n="loan_type_annuity">Annuity</option>
+                <option value="diff" data-i18n="loan_type_diff">Differentiated</option>
             </select>
         </div>
 
-        <div class="extra-item-block">
-            <label data-i18n="insurance">Insurance</label>
-            <input type="number" id="insurance_value" />
-            <select id="insurance_type" class="expense-type">
-                <option value="year" data-i18n="yearly">Yearly</option>
-                <option value="month" data-i18n="monthly">Monthly</option>
-                <option value="once" data-i18n="once">Once</option>
+        <div class="form-row">
+            <label data-i18n="include_fees"></label>
+            <select id="include_fees_to_loan">
+                <option value="no" data-i18n="include_fees_no"></option>
+                <option value="yes" data-i18n="include_fees_yes"></option>
             </select>
         </div>
 
-        <div class="extra-item-block">
-            <label data-i18n="service">Service</label>
-            <input type="number" id="service_value" />
-            <select id="service_type" class="expense-type">
-                <option value="year" data-i18n="yearly">Yearly</option>
-                <option value="month" data-i18n="monthly">Monthly</option>
-                <option value="once" data-i18n="once">Once</option>
-            </select>
+        <h3 class="subsection-title">One-time Fees</h3>
+
+        <div class="form-row">
+            <label data-i18n="bank_fee"></label>
+            <input type="number" id="bank_fee" />
         </div>
 
-        <div class="extra-item-block">
-            <label data-i18n="other">Other</label>
-            <input type="number" id="other_value" />
-            <select id="other_type" class="expense-type">
-                <option value="year" data-i18n="yearly">Yearly</option>
-                <option value="month" data-i18n="monthly">Monthly</option>
-                <option value="once" data-i18n="once">Once</option>
-            </select>
+        <div class="form-row">
+            <label data-i18n="dealer_fee"></label>
+            <input type="number" id="dealer_fee" />
         </div>
 
-    </div>
-</section>
+        <div class="form-row">
+            <label data-i18n="delivery_fee"></label>
+            <input type="number" id="delivery_fee" />
+        </div>
 
+        <div class="form-row">
+            <label data-i18n="service_fee"></label>
+            <input type="number" id="service_fee" />
+        </div>
 
-<!-- ==================== CUSTOM COSTS ==================== -->
-<section class="card">
-    <h2 class="section-title" data-i18n="custom_costs">Custom Costs</h2>
-
-    <label class="checkbox">
-        <input type="checkbox" id="custom_toggle" />
-        <span data-i18n="add_custom">Add custom costs</span>
-    </label>
-
-    <div id="custom_block" class="hidden">
-
-        <div id="custom_list"></div>
-
-        <button class="btn btn-secondary" id="btn_add_custom" data-i18n="add_row">
-            + Add row
+        <button class="btn btn-primary" id="btn_calc_loan" data-i18n="btn_calc_loan">
+            Calculate loan
         </button>
-    </div>
-</section>
 
+        <div id="loan_result" class="result-block hidden"></div>
+    </section>
 
-<!-- ==================== FINAL RESULT ==================== -->
-<section class="card">
-    <h2 class="section-title" data-i18n="final_calc">Final Calculation</h2>
+    <!-- ======================== EXTRA EXPENSES ========================= -->
+    <section class="card">
+        <h2 class="section-title" data-i18n="extra_section">Extra expenses</h2>
 
-    <button class="btn btn-primary" id="btn_calc_all" data-i18n="calculate_all">
-        Calculate all
-    </button>
+        <label class="checkbox">
+            <input type="checkbox" id="extra_toggle" />
+            <span data-i18n="extra_enable"></span>
+        </label>
 
-    <div id="final_result" class="results-container hidden"></div>
+        <div id="extra_block" class="hidden">
+            <div class="extra-item-block">
+                <label data-i18n="extra_tax"></label>
+                <input type="number" id="tax_value" />
+                <select id="tax_type">
+                    <option value="year" data-i18n="period_year"></option>
+                    <option value="month" data-i18n="period_month"></option>
+                    <option value="once" data-i18n="period_once"></option>
+                </select>
+            </div>
 
-    <div id="total_summary" class="total-summary hidden">
-        <h3 class="total-title">TOTAL</h3>
-        <div id="total_value" class="total-value"></div>
-    </div>
-</section>
+            <div class="extra-item-block">
+                <label data-i18n="extra_insurance"></label>
+                <input type="number" id="insurance_value" />
+                <select id="insurance_type">
+                    <option value="year" data-i18n="period_year"></option>
+                    <option value="month" data-i18n="period_month"></option>
+                    <option value="once" data-i18n="period_once"></option>
+                </select>
+            </div>
+
+            <div class="extra-item-block">
+                <label data-i18n="extra_service"></label>
+                <input type="number" id="service_value2" />
+                <select id="service_type">
+                    <option value="year" data-i18n="period_year"></option>
+                    <option value="month" data-i18n="period_month"></option>
+                    <option value="once" data-i18n="period_once"></option>
+                </select>
+            </div>
+
+            <div class="extra-item-block">
+                <label data-i18n="extra_other"></label>
+                <input type="number" id="other_value" />
+                <select id="other_type">
+                    <option value="year" data-i18n="period_year"></option>
+                    <option value="month" data-i18n="period_month"></option>
+                    <option value="once" data-i18n="period_once"></option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== CUSTOM EXPENSES ========================= -->
+    <section class="card">
+        <h2 class="section-title" data-i18n="custom_section"></h2>
+
+        <label class="checkbox">
+            <input type="checkbox" id="custom_toggle" />
+            <span data-i18n="custom_enable"></span>
+        </label>
+
+        <div id="custom_block" class="hidden">
+            <div id="custom_list"></div>
+
+            <button class="btn btn-secondary" id="btn_add_custom" data-i18n="custom_add">
+                + Add expense
+            </button>
+        </div>
+    </section>
+
+    <!-- ======================== FINAL SUMMARY ========================= -->
+    <section class="card">
+        <h2 class="section-title" data-i18n="final_section"></h2>
+
+        <button class="btn btn-primary" id="btn_calc_all" data-i18n="btn_calc_all"></button>
+
+        <div id="final_result" class="results-container hidden"></div>
+
+        <div id="total_summary" class="total-summary hidden">
+            <h3 class="total-title" data-i18n="total"></h3>
+            <div id="total_value" class="total-value">0</div>
+        </div>
+    </section>
 
 </main>
 
-<!-- ======================= FOOTER ======================= -->
+<!-- ======================== FOOTER ========================= -->
 <footer class="footer">
-    <div class="footer-inner">
-        <span id="footer_year"></span>
-        <span class="footer-dot">•</span>
-        <span class="footer-app-name">CarCalc Pro</span>
-        <span class="footer-dot">•</span>
-        <span id="app_version">v1.0.0</span>
-    </div>
+    <span data-i18n="footer_rights"></span> —
+    <span id="footer_year"></span>
 </footer>
 
-<!-- ======================== JS ========================== -->
-<script src="js/ui.js"></script>
+<!-- ======================== SCRIPTS ========================= -->
 <script src="js/lang.js"></script>
+<script src="js/ui.js"></script>
 <script src="js/pwa.js"></script>
+<script src="js/update-notify.js"></script>
 
 <script src="js/loan.js"></script>
 <script src="js/extra.js"></script>
 <script src="js/calc_all.js"></script>
-<script src="js/update-notify.js"></script>
 
 </body>
 </html>
