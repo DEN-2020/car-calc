@@ -1,24 +1,24 @@
 const CACHE_NAME = "carcalc-cache-v1";
 
 const ASSETS = [
-  "/",
-  "/index.html",
-  "/css/styles.css",
-  "/js/ui.js",
-  "/js/lang.js",
-  "/js/pwa.js",
-  "/js/loan.js",
-  "/js/extra.js",
-  "/js/calc_all.js",
-  "/manifest.json",
-  "/lang/en.json",
-  "/lang/ru.json",
-  "/lang/fi.json",
+  "./",
+  "./index.html",
+  "./css/styles.css",
+  "./js/ui.js",
+  "./js/lang.js",
+  "./js/pwa.js",
+  "./js/loan.js",
+  "./js/extra.js",
+  "./js/calc_all.js",
+  "./manifest.json",
+  "./lang/en.json",
+  "./lang/ru.json",
+  "./lang/fi.json",
 
-  "/icons/icon-192.png",
-  "/icons/icon-512.png",
-  "/icons/icon-maskable-192.png",
-  "/icons/icon-maskable-512.png"
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/icon-maskable-192.png",
+  "./icons/icon-maskable-512.png"
 ];
 
 // Install
