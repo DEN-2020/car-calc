@@ -187,12 +187,21 @@
 
 
     <!-- ======================= ИТОГОВЫЙ БЛОК =================== -->
+  
+    
     <section class="card">
-        <h2 class="section-title">Итоговый расчёт</h2>
+    <h2 class="section-title">Final Calculation</h2>
 
-        <button class="btn btn-primary" id="btn_calc_all">Посчитать всё</button>
+    <button class="btn btn-primary" id="btn_calc_all">Calculate all</button>
 
-        <div id="final_result" class="result-block hidden"></div>
+    <!-- Итоговый контейнер куда JS будет рендерить карточки -->
+    <div id="final_result" class="results-container hidden"></div>
+
+    <!-- Общий итог TOTAL -->
+    <div id="total_summary" class="total-summary hidden">
+        <h3 class="total-title">TOTAL</h3>
+        <div id="total_value" class="total-value">0</div>
+    </div>
     </section>
 
 </main>
