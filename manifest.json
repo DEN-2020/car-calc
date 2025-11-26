@@ -1,10 +1,12 @@
 {
   "name": "CarCalc Pro",
   "short_name": "CarCalc",
-  "description": "Advanced car loan & cost calculator with IRR, expenses and PWA support.",
+  "description": "Advanced car loan & cost calculator.",
   "lang": "en",
-  "start_url": "/index.html",
-  "scope": "/",
+
+  "start_url": "./index.html",
+  "scope": "./",
+
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#0d6efd",
@@ -18,16 +20,16 @@
       "purpose": "any"
     },
     {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
       "src": "icons/icon-maskable-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "icons/icon-maskable-512.png",
