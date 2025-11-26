@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Калькулятор автомобиля</title>
+    <title data-i18n="title">Car Cost Calculator</title>
 
     <!-- PWA -->
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#0d6efd" />
+
     <script>
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("sw.js");
@@ -21,195 +22,226 @@
 
 <body>
 
+<!-- ====================== HEADER ====================== -->
 <header class="header">
-    <h1 class="app-title">Калькулятор автомобиля</h1>
+    <div class="header-inner">
+
+        <h1 class="app-title" data-i18n="title">Car Cost Calculator</h1>
+
+        <div class="header-actions">
+
+            <!-- Language selector -->
+            <select id="lang_select" class="lang-select">
+                <option value="en" selected>EN</option>
+                <option value="ru">RU</option>
+                <option value="fi">FI</option>
+            </select>
+
+            <!-- Theme toggle -->
+            <button id="theme_toggle" class="theme-btn" title="Toggle theme">🌙</button>
+
+            <!-- PWA Install button -->
+            <button id="install_btn" class="install-btn hidden">
+                ⬇ Install
+            </button>
+        </div>
+    </div>
 </header>
 
 <main class="container">
 
-    <!-- ======================== КРЕДИТ ========================= -->
-    <section class="card">
-    <h2 class="section-title">Расчёт кредита</h2>
+<!-- ======================= LOAN ======================== -->
+<section class="card">
+    <h2 class="section-title" data-i18n="loan_calc">Loan Calculation</h2>
 
     <div class="form-row">
-        <label for="car_price">Стоимость автомобиля</label>
+        <label for="car_price" data-i18n="car_price">Car price</label>
         <input type="number" id="car_price" />
     </div>
 
     <div class="form-row">
-        <label for="down_payment">Первоначальный взнос (первый платёж)</label>
+        <label for="down_payment" data-i18n="down_payment">Down payment</label>
         <input type="number" id="down_payment" />
     </div>
 
-    <!-- Баллонный платеж / остаточный -->
     <div class="form-row">
-        <label for="balloon_payment">Последний крупный платёж (Balloon, остаточная стоимость)</label>
-        <input type="number" id="balloon_payment" placeholder="0 если нет" />
+        <label for="balloon_payment" data-i18n="balloon">Balloon payment</label>
+        <input type="number" id="balloon_payment" placeholder="0" />
     </div>
 
-    <!-- Срок кредита -->
     <div class="form-grid">
         <div class="form-col">
-            <label for="loan_years">Срок кредита (годы)</label>
+            <label for="loan_years" data-i18n="loan_years">Years</label>
             <input type="number" id="loan_years" />
         </div>
 
         <div class="form-col">
-            <label for="loan_months">Или срок (месяцы)</label>
+            <label for="loan_months" data-i18n="loan_months">Months</label>
             <input type="number" id="loan_months" />
         </div>
     </div>
 
     <div class="form-row">
-        <label for="interest_rate">Процентная ставка (% годовых)</label>
+        <label for="interest_rate" data-i18n="interest_rate">Interest rate (%)</label>
         <input type="number" id="interest_rate" />
     </div>
 
-    <!-- Тип кредита -->
     <div class="form-row">
-        <label>Тип кредита</label>
+        <label data-i18n="loan_type">Loan type</label>
         <select id="loan_type">
-            <option value="annuity">Аннуитет</option>
-            <option value="diff">Дифференцированный</option>
+            <option value="annuity" data-i18n="annuity">Annuity</option>
+            <option value="diff" data-i18n="diff">Differentiated</option>
         </select>
     </div>
 
-    <!-- Включать разовые платежи в тело кредита -->
     <div class="form-row">
-        <label>Включать ли разовые платежи в тело кредита?</label>
+        <label data-i18n="include_fees">Include fees into loan?</label>
         <select id="include_fees_to_loan">
-            <option value="no">Нет — платить отдельно</option>
-            <option value="yes">Да — добавить к сумме кредита</option>
+            <option value="no" data-i18n="no">No</option>
+            <option value="yes" data-i18n="yes">Yes</option>
         </select>
     </div>
 
-    <!-- Разовые комиссии -->
-    <div class="subsection-title">Разовые комиссии</div>
+    <div class="subsection-title" data-i18n="one_time_fees">One-time fees</div>
 
     <div class="form-row">
-        <label>Комиссия банка за оформление</label>
-        <input type="number" id="bank_fee" placeholder="0 если нет" />
+        <label data-i18n="bank_fee">Bank fee</label>
+        <input type="number" id="bank_fee" />
     </div>
 
     <div class="form-row">
-        <label>Комиссия дилера за оформление</label>
-        <input type="number" id="dealer_fee" placeholder="0 если нет" />
+        <label data-i18n="dealer_fee">Dealer fee</label>
+        <input type="number" id="dealer_fee" />
     </div>
 
     <div class="form-row">
-        <label>Комиссия за доставку автомобиля</label>
-        <input type="number" id="delivery_fee" placeholder="0 если нет" />
+        <label data-i18n="delivery_fee">Delivery fee</label>
+        <input type="number" id="delivery_fee" />
     </div>
 
     <div class="form-row">
-        <label>Разовый платёж автосалону (palvelumaksu)</label>
-        <input type="number" id="service_fee" placeholder="0 если нет" />
+        <label data-i18n="service_fee">Service fee</label>
+        <input type="number" id="service_fee" />
     </div>
 
-    <button class="btn btn-primary" id="btn_calc_loan">Рассчитать кредит</button>
+    <button class="btn btn-primary" id="btn_calc_loan" data-i18n="calc_loan">Calculate loan</button>
 
     <div id="loan_result" class="result-block hidden"></div>
-    </section>
+</section>
 
-    <!-- ==================== ДОП РАСХОДЫ ===================== -->
-    <section class="card">
-        <h2 class="section-title">Дополнительные расходы</h2>
 
-        <label class="checkbox">
-            <input type="checkbox" id="extra_toggle" />
-            Учитывать доп. расходы
-        </label>
+<!-- ==================== EXTRA COSTS ==================== -->
+<section class="card">
+    <h2 class="section-title" data-i18n="extra_costs">Extra Costs</h2>
 
-        <div id="extra_block" class="hidden">
+    <label class="checkbox">
+        <input type="checkbox" id="extra_toggle" />
+        <span data-i18n="use_extra">Include extra costs</span>
+    </label>
 
-            <div class="extra-item-block">
-                <label>Налог</label>
-                <input type="number" id="tax_value" placeholder="Сумма" />
-                <select id="tax_type" class="expense-type">
-                    <option value="year">Ежегодно</option>
-                    <option value="month">Ежемесячно</option>
-                    <option value="once">Разово</option>
-                </select>
-            </div>
+    <div id="extra_block" class="hidden">
 
-            <div class="extra-item-block">
-                <label>Страховка</label>
-                <input type="number" id="insurance_value" />
-                <select id="insurance_type" class="expense-type">
-                    <option value="year">Ежегодно</option>
-                    <option value="month">Ежемесячно</option>
-                    <option value="once">Разово</option>
-                </select>
-            </div>
-
-            <div class="extra-item-block">
-                <label>ТО / Сервис</label>
-                <input type="number" id="service_value" />
-                <select id="service_type" class="expense-type">
-                    <option value="year">Ежегодно</option>
-                    <option value="month">Ежемесячно</option>
-                    <option value="once">Разово</option>
-                </select>
-            </div>
-
-            <div class="extra-item-block">
-                <label>Прочие расходы</label>
-                <input type="number" id="other_value" />
-                <select id="other_type" class="expense-type">
-                    <option value="year">Ежегодно</option>
-                    <option value="month">Ежемесячно</option>
-                    <option value="once">Разово</option>
-                </select>
-            </div>
-
+        <div class="extra-item-block">
+            <label data-i18n="tax">Tax</label>
+            <input type="number" id="tax_value" />
+            <select id="tax_type" class="expense-type">
+                <option value="year" data-i18n="yearly">Yearly</option>
+                <option value="month" data-i18n="monthly">Monthly</option>
+                <option value="once" data-i18n="once">Once</option>
+            </select>
         </div>
-    </section>
 
-
-    <!-- ==================== КАСТОМНЫЕ РАСХОДЫ =================== -->
-    <section class="card">
-        <h2 class="section-title">Кастомные расходы</h2>
-
-        <label class="checkbox">
-            <input type="checkbox" id="custom_toggle" />
-            Добавить свои расходы
-        </label>
-
-        <div id="custom_block" class="hidden">
-
-            <div id="custom_list"></div>
-
-            <button class="btn btn-secondary" id="btn_add_custom">
-                + Добавить расход
-            </button>
+        <div class="extra-item-block">
+            <label data-i18n="insurance">Insurance</label>
+            <input type="number" id="insurance_value" />
+            <select id="insurance_type" class="expense-type">
+                <option value="year" data-i18n="yearly">Yearly</option>
+                <option value="month" data-i18n="monthly">Monthly</option>
+                <option value="once" data-i18n="once">Once</option>
+            </select>
         </div>
-    </section>
+
+        <div class="extra-item-block">
+            <label data-i18n="service">Service</label>
+            <input type="number" id="service_value" />
+            <select id="service_type" class="expense-type">
+                <option value="year" data-i18n="yearly">Yearly</option>
+                <option value="month" data-i18n="monthly">Monthly</option>
+                <option value="once" data-i18n="once">Once</option>
+            </select>
+        </div>
+
+        <div class="extra-item-block">
+            <label data-i18n="other">Other</label>
+            <input type="number" id="other_value" />
+            <select id="other_type" class="expense-type">
+                <option value="year" data-i18n="yearly">Yearly</option>
+                <option value="month" data-i18n="monthly">Monthly</option>
+                <option value="once" data-i18n="once">Once</option>
+            </select>
+        </div>
+
+    </div>
+</section>
 
 
-    <!-- ======================= ИТОГОВЫЙ БЛОК =================== -->
-  
-    
-    <section class="card">
-    <h2 class="section-title">Final Calculation</h2>
+<!-- ==================== CUSTOM COSTS ==================== -->
+<section class="card">
+    <h2 class="section-title" data-i18n="custom_costs">Custom Costs</h2>
 
-    <button class="btn btn-primary" id="btn_calc_all">Calculate all</button>
+    <label class="checkbox">
+        <input type="checkbox" id="custom_toggle" />
+        <span data-i18n="add_custom">Add custom costs</span>
+    </label>
 
-    <!-- Итоговый контейнер куда JS будет рендерить карточки -->
+    <div id="custom_block" class="hidden">
+
+        <div id="custom_list"></div>
+
+        <button class="btn btn-secondary" id="btn_add_custom" data-i18n="add_row">
+            + Add row
+        </button>
+    </div>
+</section>
+
+
+<!-- ==================== FINAL RESULT ==================== -->
+<section class="card">
+    <h2 class="section-title" data-i18n="final_calc">Final Calculation</h2>
+
+    <button class="btn btn-primary" id="btn_calc_all" data-i18n="calculate_all">
+        Calculate all
+    </button>
+
     <div id="final_result" class="results-container hidden"></div>
 
-    <!-- Общий итог TOTAL -->
     <div id="total_summary" class="total-summary hidden">
         <h3 class="total-title">TOTAL</h3>
-        <div id="total_value" class="total-value">0</div>
+        <div id="total_value" class="total-value"></div>
     </div>
-    </section>
+</section>
 
 </main>
 
-<!-- JS -->
+<!-- ======================= FOOTER ======================= -->
+<footer class="footer">
+    <div class="footer-inner">
+        <span id="footer_year"></span>
+        <span class="footer-dot">•</span>
+        <span class="footer-app-name">CarCalc Pro</span>
+        <span class="footer-dot">•</span>
+        <span id="app_version">v1.0.0</span>
+    </div>
+</footer>
+
+<!-- ======================== JS ========================== -->
+<script src="js/ui.js"></script>
+<script src="js/lang.js"></script>
+<script src="js/pwa.js"></script>
+
 <script src="js/loan.js"></script>
 <script src="js/extra.js"></script>
 <script src="js/calc_all.js"></script>
 
 </body>
-</html> 
+</html>
