@@ -9,7 +9,57 @@
     <!-- PWA -->
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#0d6efd" />
+    <!-- iOS PWA meta -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CarCalc Pro">
 
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
+<!-- iPhone 5/SE -->
+<link rel="apple-touch-startup-image"
+      href="splash/splash-640x1136.png"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPhone 6/7/8/SE2/SE3 -->
+<link rel="apple-touch-startup-image"
+      href="splash/splash-750x1334.png"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPhone XR/11 -->
+<link rel="apple-touch-startup-image"
+      href="splash/splash-828x1792.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPhone X/XS/11 Pro -->
+<link rel="apple-touch-startup-image"
+      href="splash/splash-1125x2436.png"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+
+<!-- iPhone XS Max/11 Pro Max -->
+<link rel="apple-touch-startup-image"
+      href="splash/splash-1242x2688.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+
+<!-- iPad Mini/Air -->
+<link rel="apple-touch-startup-image"
+      href="splash/splash-1536x2048.png"
+      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPad Pro 10.5 -->
+<link rel="apple-touch-startup-image"
+      href="splash/splash-1668x2224.png"
+      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPad Pro 11 -->
+<link rel="apple-touch-startup-image"
+      href="splash/splash-1668x2388.png"
+      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+<!-- iPad Pro 12.9 -->
+<link rel="apple-touch-startup-image"
+      href="splash/splash-2048x2732.png"
+      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
     <script>
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("./sw.js");
