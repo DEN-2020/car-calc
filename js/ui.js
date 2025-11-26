@@ -1,52 +1,28 @@
-import { calcLoan } from "./calculator.js";
+// THEME --------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
 
-export function initLoanUI() {
-    const priceEl = document.getElementById("loan_price");
-    const downEl = document.getElementById("loan_down");
-    const yearsEl = document.getElementById("loan_years");
-    const rateEl = document.getElementById("loan_rate");
+    const html = document.documentElement;
+    const themeBtn = document.getElementById("theme_toggle");
 
-    const outMonthly = document.getElementById("loan_monthly");
-    const outInterest = document.getElementById("loan_interest");
-    const outTotal = document.getElementById("loan_total");
-
-    function update() {
-        const res = calcLoan({
-            price: priceEl.value,
-            down: downEl.value,
-            years: yearsEl.value,
-            rate: rateEl.value
-        });
-
-        outMonthly.textContent = res.monthly.toFixed(2);
-        outInterest.textContent = res.interest.toFixed(2);
-        outTotal.textContent = res.total.toFixed(2);
+    // Load theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        html.setAttribute("data-theme", savedTheme);
+        themeBtn.textContent = savedTheme === "dark" ? "🌙" : "☀️";
     }
 
-    // Auto-update on input
-    [priceEl, downEl, yearsEl, rateEl].forEach(el =>
-        el.addEventListener("input", update)
-    );
+    themeBtn.addEventListener("click", () => {
+        const current = html.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
 
-    update();
-}
-// =======================
-// Dynamic UI Controls
-// =======================
+        html.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
 
-export function addFeeRow() {
-  const container = document.getElementById("fee-list");
+        themeBtn.textContent = next === "dark" ? "🌙" : "☀️";
+    });
 
-  const row = document.createElement("div");
-  row.className = "field-row";
+    // FOOTER YEAR
+    const yearEl = document.getElementById("footer_year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  row.innerHTML = `
-      <input type="text" class="fee-name" placeholder="Fee name">
-      <input type="number" class="fee-value" placeholder="Amount €">
-      <button class="remove-fee">✖</button>
-  `;
-
-  row.querySelector(".remove-fee").onclick = () => row.remove();
-
-  container.appendChild(row);
-}
+});
