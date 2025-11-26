@@ -1,9 +1,31 @@
 {
-    "title": "Car Cost Calculator",
-    "loan_summary": "Loan Summary",
-    "extra_costs": "Extra Costs",
-    "custom_costs": "Custom Costs",
-    "after_loan": "After-Loan Costs",
-    "irr": "True Annual Cost (IRR)",
-    "calculate_all": "Calculate all"
+    "app_title": "Car Loan Calculator",
+    "loan_section": "Loan Calculation",
+    "car_price": "Car price",
+    "down_payment": "Down payment",
+    "balloon_payment": "Final balloon payment",
+    "loan_years": "Loan term (years)",
+    "loan_months": "Loan term (months)",
+    "interest_rate": "Interest rate (yearly, %)",
+    "loan_type": "Loan type",
+    "include_fees": "Include one-time fees in loan?",
+    "bank_fee": "Bank fee",
+    "dealer_fee": "Dealer fee",
+    "delivery_fee": "Delivery fee",
+    "service_fee": "Service center fee",
+
+    "btn_calc_loan": "Calculate loan",
+
+    "extra_section": "Extra expenses",
+    "extra_enable": "Include extra expenses",
+
+    "custom_section": "Custom expenses",
+    "custom_enable": "Add custom items",
+    "custom_add": "+ Add expense",
+
+    "final_section": "Final Calculation",
+    "btn_calc_all": "Calculate all",
+    "total": "TOTAL",
+
+    "footer_rights": "All rights reserved"
 }
