@@ -3,105 +3,168 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Калькулятор авто</title>
 
+    <title>Калькулятор автомобиля</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0d6efd" />
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js");
+        }
+    </script>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css" />
-
-    <style>
-        /* Временные минимальные стили — потом заменим */
-        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
-        h1 { text-align: center; }
-        .card { background: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-        label { display: block; margin-top: 10px; font-weight: bold; }
-        input { width: 100%; padding: 8px; margin-top: 5px; }
-        .hidden { display: none; }
-        .btn { margin-top: 15px; padding: 10px 15px; border: none; background: #0072ff; color: #fff; cursor: pointer; }
-        .btn:hover { background: #0059c9; }
-        .flex { display: flex; gap: 20px; }
-        .flex > div { flex: 1; }
-        .custom-row { display: flex; gap: 10px; margin-top: 10px; }
-        .custom-row input { flex: 1; }
-        .remove-btn { background: #c62828; padding: 8px; color: #fff; border: none; cursor: pointer; }
-    </style>
 </head>
+
 <body>
 
-<h1>Калькулятор автомобиля</h1>
+<header class="header">
+    <h1 class="app-title">Калькулятор автомобиля</h1>
+</header>
 
-<!-- ===================== LOAN CALCULATOR ===================== -->
-<div class="card">
-    <h2>Расчёт кредита</h2>
+<main class="container">
 
-    <label>Стоимость автомобиля</label>
-    <input type="number" id="car_price" placeholder="Например 1500000" />
+    <!-- ======================== КРЕДИТ ========================= -->
+    <section class="card">
+        <h2 class="section-title">Расчёт кредита</h2>
 
-    <label>Первоначальный взнос</label>
-    <input type="number" id="down_payment" placeholder="0 если нет" />
-
-    <div class="flex">
-        <div>
-            <label>Срок кредита (в годах)</label>
-            <input type="number" id="loan_years" placeholder="Например 5" />
+        <div class="form-row">
+            <label for="car_price">Стоимость автомобиля</label>
+            <input type="number" id="car_price" />
         </div>
-        <div>
-            <label>Или срок (в месяцах)</label>
-            <input type="number" id="loan_months" placeholder="60" />
+
+        <div class="form-row">
+            <label for="down_payment">Первоначальный взнос</label>
+            <input type="number" id="down_payment" />
         </div>
-    </div>
 
-    <label>Годовая процентная ставка (%)</label>
-    <input type="number" id="interest_rate" placeholder="Например 12" />
+        <div class="form-grid">
+            <div class="form-col">
+                <label for="loan_years">Срок кредита (годы)</label>
+                <input type="number" id="loan_years" />
+            </div>
 
-    <button class="btn" onclick="calcLoan()">Рассчитать кредит</button>
+            <div class="form-col">
+                <label for="loan_months">Или срок (месяцы)</label>
+                <input type="number" id="loan_months" />
+            </div>
+        </div>
 
-    <div id="loan_result" class="card hidden"></div>
-</div>
+        <div class="form-row">
+            <label for="interest_rate">Процентная ставка (% годовых)</label>
+            <input type="number" id="interest_rate" />
+        </div>
 
-<!-- ===================== EXTRA EXPENSES ===================== -->
-<div class="card">
-    <h2>Дополнительные расходы</h2>
+        <div class="form-row">
+            <label>Тип кредита</label>
+            <select id="loan_type">
+                <option value="annuity">Аннуитет</option>
+                <option value="diff">Дифференцированный</option>
+            </select>
+        </div>
 
-    <label>
-        <input type="checkbox" id="extra_toggle" onchange="toggleExtra()" />
-        Учитывать дополнительные расходы
-    </label>
+        <button class="btn btn-primary" id="btn_calc_loan">Рассчитать кредит</button>
 
-    <div id="extra_block" class="hidden">
+        <div id="loan_result" class="result-block hidden"></div>
+    </section>
 
-        <label>Налог (в год)</label>
-        <input type="number" id="tax_year" placeholder="Например 8000" />
 
-        <label>Страховка (в год)</label>
-        <input type="number" id="insurance_year" placeholder="Например 15000" />
+    <!-- ==================== ДОП РАСХОДЫ ===================== -->
+    <section class="card">
+        <h2 class="section-title">Дополнительные расходы</h2>
 
-        <label>ТО / Обслуживание (в год)</label>
-        <input type="number" id="service_year" placeholder="Например 5000" />
+        <label class="checkbox">
+            <input type="checkbox" id="extra_toggle" />
+            Учитывать доп. расходы
+        </label>
 
-        <label>Прочие регулярные расходы (в год)</label>
-        <input type="number" id="other_year" placeholder="0 если нет" />
-    </div>
-</div>
+        <div id="extra_block" class="hidden">
 
-<!-- ===================== CUSTOM EXPENSES ===================== -->
-<div class="card">
-    <h2>Кастомные расходы</h2>
+            <div class="extra-item-block">
+                <label>Налог</label>
+                <input type="number" id="tax_value" placeholder="Сумма" />
+                <select id="tax_type" class="expense-type">
+                    <option value="year">Ежегодно</option>
+                    <option value="month">Ежемесячно</option>
+                    <option value="once">Разово</option>
+                </select>
+            </div>
 
-    <label>
-        <input type="checkbox" id="custom_toggle" onchange="toggleCustom()" />
-        Добавить свои расходы
-    </label>
+            <div class="extra-item-block">
+                <label>Страховка</label>
+                <input type="number" id="insurance_value" />
+                <select id="insurance_type" class="expense-type">
+                    <option value="year">Ежегодно</option>
+                    <option value="month">Ежемесячно</option>
+                    <option value="once">Разово</option>
+                </select>
+            </div>
 
-    <div id="custom_block" class="hidden">
-        <div id="custom_list"></div>
+            <div class="extra-item-block">
+                <label>ТО / Сервис</label>
+                <input type="number" id="service_value" />
+                <select id="service_type" class="expense-type">
+                    <option value="year">Ежегодно</option>
+                    <option value="month">Ежемесячно</option>
+                    <option value="once">Разово</option>
+                </select>
+            </div>
 
-        <button class="btn" onclick="addCustom()">+ Добавить расход</button>
-    </div>
-</div>
+            <div class="extra-item-block">
+                <label>Прочие расходы</label>
+                <input type="number" id="other_value" />
+                <select id="other_type" class="expense-type">
+                    <option value="year">Ежегодно</option>
+                    <option value="month">Ежемесячно</option>
+                    <option value="once">Разово</option>
+                </select>
+            </div>
 
-<!-- ===================== FINAL RESULTS ===================== -->
-<div class="card">
-    <button class="btn" onclick="calculateAll()">Итоговый расчёт</button>
-    <div id="final_result" class="card hidden"></div>
+        </div>
+    </section>
+
+
+    <!-- ==================== КАСТОМНЫЕ РАСХОДЫ =================== -->
+    <section class="card">
+        <h2 class="section-title">Кастомные расходы</h2>
+
+        <label class="checkbox">
+            <input type="checkbox" id="custom_toggle" />
+            Добавить свои расходы
+        </label>
+
+        <div id="custom_block" class="hidden">
+
+            <div id="custom_list"></div>
+
+            <button class="btn btn-secondary" id="btn_add_custom">
+                + Добавить расход
+            </button>
+        </div>
+    </section>
+
+
+    <!-- ======================= ИТОГОВЫЙ БЛОК =================== -->
+    <section class="card">
+        <h2 class="section-title">Итоговый расчёт</h2>
+
+        <button class="btn btn-primary" id="btn_calc_all">Посчитать всё</button>
+
+        <div id="final_result" class="result-block hidden"></div>
+    </section>
+
+</main>
+
+<!-- JS -->
+<script src="js/loan.js"></script>
+<script src="js/extra.js"></script>
+<script src="js/calc_all.js"></script>
+
+</body>
+</html>    <div id="final_result" class="card hidden"></div>
 </div>
 
 
