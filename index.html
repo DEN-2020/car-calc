@@ -29,48 +29,87 @@
 
     <!-- ======================== КРЕДИТ ========================= -->
     <section class="card">
-        <h2 class="section-title">Расчёт кредита</h2>
+    <h2 class="section-title">Расчёт кредита</h2>
 
-        <div class="form-row">
-            <label for="car_price">Стоимость автомобиля</label>
-            <input type="number" id="car_price" />
+    <div class="form-row">
+        <label for="car_price">Стоимость автомобиля</label>
+        <input type="number" id="car_price" />
+    </div>
+
+    <div class="form-row">
+        <label for="down_payment">Первоначальный взнос (первый платёж)</label>
+        <input type="number" id="down_payment" />
+    </div>
+
+    <!-- Баллонный платеж / остаточный -->
+    <div class="form-row">
+        <label for="balloon_payment">Последний крупный платёж (Balloon, остаточная стоимость)</label>
+        <input type="number" id="balloon_payment" placeholder="0 если нет" />
+    </div>
+
+    <!-- Срок кредита -->
+    <div class="form-grid">
+        <div class="form-col">
+            <label for="loan_years">Срок кредита (годы)</label>
+            <input type="number" id="loan_years" />
         </div>
 
-        <div class="form-row">
-            <label for="down_payment">Первоначальный взнос</label>
-            <input type="number" id="down_payment" />
+        <div class="form-col">
+            <label for="loan_months">Или срок (месяцы)</label>
+            <input type="number" id="loan_months" />
         </div>
+    </div>
 
-        <div class="form-grid">
-            <div class="form-col">
-                <label for="loan_years">Срок кредита (годы)</label>
-                <input type="number" id="loan_years" />
-            </div>
+    <div class="form-row">
+        <label for="interest_rate">Процентная ставка (% годовых)</label>
+        <input type="number" id="interest_rate" />
+    </div>
 
-            <div class="form-col">
-                <label for="loan_months">Или срок (месяцы)</label>
-                <input type="number" id="loan_months" />
-            </div>
-        </div>
+    <!-- Тип кредита -->
+    <div class="form-row">
+        <label>Тип кредита</label>
+        <select id="loan_type">
+            <option value="annuity">Аннуитет</option>
+            <option value="diff">Дифференцированный</option>
+        </select>
+    </div>
 
-        <div class="form-row">
-            <label for="interest_rate">Процентная ставка (% годовых)</label>
-            <input type="number" id="interest_rate" />
-        </div>
+    <!-- Включать разовые платежи в тело кредита -->
+    <div class="form-row">
+        <label>Включать ли разовые платежи в тело кредита?</label>
+        <select id="include_fees_to_loan">
+            <option value="no">Нет — платить отдельно</option>
+            <option value="yes">Да — добавить к сумме кредита</option>
+        </select>
+    </div>
 
-        <div class="form-row">
-            <label>Тип кредита</label>
-            <select id="loan_type">
-                <option value="annuity">Аннуитет</option>
-                <option value="diff">Дифференцированный</option>
-            </select>
-        </div>
+    <!-- Разовые комиссии -->
+    <div class="subsection-title">Разовые комиссии</div>
 
-        <button class="btn btn-primary" id="btn_calc_loan">Рассчитать кредит</button>
+    <div class="form-row">
+        <label>Комиссия банка за оформление</label>
+        <input type="number" id="bank_fee" placeholder="0 если нет" />
+    </div>
 
-        <div id="loan_result" class="result-block hidden"></div>
+    <div class="form-row">
+        <label>Комиссия дилера за оформление</label>
+        <input type="number" id="dealer_fee" placeholder="0 если нет" />
+    </div>
+
+    <div class="form-row">
+        <label>Комиссия за доставку автомобиля</label>
+        <input type="number" id="delivery_fee" placeholder="0 если нет" />
+    </div>
+
+    <div class="form-row">
+        <label>Разовый платёж автосалону (palvelumaksu)</label>
+        <input type="number" id="service_fee" placeholder="0 если нет" />
+    </div>
+
+    <button class="btn btn-primary" id="btn_calc_loan">Рассчитать кредит</button>
+
+    <div id="loan_result" class="result-block hidden"></div>
     </section>
-
 
     <!-- ==================== ДОП РАСХОДЫ ===================== -->
     <section class="card">
