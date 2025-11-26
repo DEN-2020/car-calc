@@ -1,0 +1,9 @@
+{
+    "title": "Auton kulu laskuri",
+    "loan_summary": "Laina",
+    "extra_costs": "Lisä kulut",
+    "custom_costs": "Muut kulut",
+    "after_loan": "Lainan jalkkeen",
+    "irr": "Todellinen vuosikorko IRR",
+    "calculate_all": "Laske yhteensa"
+}
