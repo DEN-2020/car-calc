@@ -38,18 +38,44 @@ h1, h2, h3 {
 }
 
 /* ----------------------------------------
-   HEADER
+   TOPBAR
 ----------------------------------------- */
-.header {
-    background: var(--primary);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 20;
 }
 
-.app-title {
-    margin: 0;
-    font-size: 1.7rem;
+.topbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: none;
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+.lang-select {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 0.9rem;
 }
 
 /* ----------------------------------------
@@ -148,7 +174,7 @@ h1, h2, h3 {
 }
 
 /* ----------------------------------------
-   CUSTOM COSTS ROWS
+   CUSTOM COSTS ROW
 ----------------------------------------- */
 .custom-row {
     display: flex;
@@ -186,11 +212,6 @@ h1, h2, h3 {
     overflow: hidden;
     opacity: 1;
     transition: opacity 0.4s ease, transform 0.3s ease;
-}
-
-.result-card.fade-out {
-    opacity: 0.3;
-    transform: scale(0.98);
 }
 
 .result-card.disabled {
@@ -278,54 +299,17 @@ h1, h2, h3 {
         gap: 5px;
         align-items: flex-start;
     }
-}
 
-
-/* ----------------------------------------
-   HEADER ACTIONS
------------------------------------------ */
-
-.header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.lang-select {
-    padding: 6px 10px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--card-bg);
-    font-size: 0.9rem;
-}
-
-.theme-btn {
-    font-size: 1.3rem;
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 6px;
-}
-
-.install-btn {
-    padding: 6px 10px;
-    border-radius: 6px;
-    background: var(--primary);
-    color: #fff;
-    border: none;
-    cursor: pointer;
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
 }
 
 /* ----------------------------------------
    DARK / LIGHT THEMES
 ----------------------------------------- */
-
 html[data-theme="dark"] {
     --bg: #1c1c1e;
     --card-bg: #2c2c2e;
@@ -347,7 +331,6 @@ html[data-theme="light"] {
 /* ----------------------------------------
    FOOTER
 ----------------------------------------- */
-
 .footer {
     padding: 20px;
     text-align: center;
@@ -365,6 +348,10 @@ html[data-theme="light"] {
     font-size: 12px;
     opacity: 0.7;
 }
+
+/* ----------------------------------------
+   UPDATE BANNER
+----------------------------------------- */
 .update-banner {
     position: fixed;
     bottom: 20px;
@@ -387,17 +374,4 @@ html[data-theme="light"] {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-}
-
-
-.lang-switch {
-    margin-left: 10px;
-}
-
-#lang_select {
-    background: var(--card-bg);
-    color: var(--text-color);
-    border: 1px solid var(--border);
-    padding: 4px 8px;
-    border-radius: 6px;
 }
