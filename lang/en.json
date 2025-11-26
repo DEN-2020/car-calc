@@ -1,0 +1,9 @@
+{
+    "title": "Car Cost Calculator",
+    "loan_summary": "Loan Summary",
+    "extra_costs": "Extra Costs",
+    "custom_costs": "Custom Costs",
+    "after_loan": "After-Loan Costs",
+    "irr": "True Annual Cost (IRR)",
+    "calculate_all": "Calculate all"
+}
