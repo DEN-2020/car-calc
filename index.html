@@ -97,40 +97,58 @@
 
 <main class="container">
 
-    <!-- ======================== LOAN SECTION ========================= -->
+ <!-- ======================== LOAN SECTION ========================= -->
     <section class="card">
         <h2 class="section-title" data-i18n="loan_section">Loan Calculation</h2>
 
         <div class="form-row">
             <label data-i18n="car_price"></label>
-            <input type="number" id="car_price" />
+            <div class="input-with-icon">
+                <span class="input-icon">🚗</span>
+                <input type="number" id="car_price" />
+            </div>
         </div>
 
         <div class="form-row">
             <label data-i18n="down_payment"></label>
-            <input type="number" id="down_payment" />
+            <div class="input-with-icon">
+                <span class="input-icon">💸</span>
+                <input type="number" id="down_payment" />
+            </div>
         </div>
 
         <div class="form-row">
             <label data-i18n="balloon_payment"></label>
-            <input type="number" id="balloon_payment" placeholder="0" />
+            <div class="input-with-icon">
+                <span class="input-icon">🎈</span>
+                <input type="number" id="balloon_payment" placeholder="0" />
+            </div>
         </div>
 
         <div class="form-grid">
             <div class="form-col">
                 <label data-i18n="loan_years"></label>
-                <input type="number" id="loan_years" />
+                <div class="input-with-icon">
+                    <span class="input-icon">📅</span>
+                    <input type="number" id="loan_years" />
+                </div>
             </div>
 
             <div class="form-col">
                 <label data-i18n="loan_months"></label>
-                <input type="number" id="loan_months" />
+                <div class="input-with-icon">
+                    <span class="input-icon">📆</span>
+                    <input type="number" id="loan_months" />
+                </div>
             </div>
         </div>
 
         <div class="form-row">
             <label data-i18n="interest_rate"></label>
-            <input type="number" id="interest_rate" />
+            <div class="input-with-icon">
+                <span class="input-icon">%</span>
+                <input type="number" id="interest_rate" />
+            </div>
         </div>
 
         <div class="form-row">
@@ -153,22 +171,34 @@
 
         <div class="form-row">
             <label data-i18n="bank_fee"></label>
-            <input type="number" id="bank_fee" />
+            <div class="input-with-icon">
+                <span class="input-icon">🏦</span>
+                <input type="number" id="bank_fee" />
+            </div>
         </div>
 
         <div class="form-row">
             <label data-i18n="dealer_fee"></label>
-            <input type="number" id="dealer_fee" />
+            <div class="input-with-icon">
+                <span class="input-icon">🏪</span>
+                <input type="number" id="dealer_fee" />
+            </div>
         </div>
 
         <div class="form-row">
             <label data-i18n="delivery_fee"></label>
-            <input type="number" id="delivery_fee" />
+            <div class="input-with-icon">
+                <span class="input-icon">🚚</span>
+                <input type="number" id="delivery_fee" />
+            </div>
         </div>
 
         <div class="form-row">
             <label data-i18n="service_fee"></label>
-            <input type="number" id="service_fee" />
+            <div class="input-with-icon">
+                <span class="input-icon">🛠️</span>
+                <input type="number" id="service_fee" />
+            </div>
         </div>
 
         <button class="btn btn-primary" id="btn_calc_loan" data-i18n="btn_calc_loan">
