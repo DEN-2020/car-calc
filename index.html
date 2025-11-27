@@ -210,47 +210,88 @@
 
     <!-- ======================== EXTRA EXPENSES ========================= -->
     <section class="card">
-        <h2 class="section-title" data-i18n="extra_section">Extra expenses</h2>
+    <h2 class="section-title" data-i18n="extra_section">Extra expenses</h2>
 
-        <label class="checkbox">
-            <input type="checkbox" id="extra_toggle" />
-            <span data-i18n="extra_enable"></span>
-        </label>
+    <!-- enable toggle -->
+    <label class="checkbox">
+        <input type="checkbox" id="extra_toggle" />
+        <span data-i18n="extra_enable"></span>
+    </label>
 
-        <div id="extra_block" class="hidden">
-            <div class="extra-item-block">
+    <div id="extra_block" class="hidden" style="margin-top: 15px;">
+
+        <!-- ============ ROW 1 =============== -->
+        <div class="form-grid">
+            <div class="form-col">
                 <label data-i18n="extra_tax"></label>
-                <input type="number" id="tax_value" />
+                <div class="input-with-icon">
+                    <span class="input-icon">🏛</span>
+                    <input type="number" id="tax_value" placeholder="0" />
+                </div>
+            </div>
+
+            <div class="form-col">
+                <label data-i18n="period"></label>
                 <select id="tax_type">
                     <option value="year" data-i18n="period_year"></option>
                     <option value="month" data-i18n="period_month"></option>
                     <option value="once" data-i18n="period_once"></option>
                 </select>
             </div>
+        </div>
 
-            <div class="extra-item-block">
+        <!-- ============ ROW 2 =============== -->
+        <div class="form-grid" style="margin-top: 14px;">
+            <div class="form-col">
                 <label data-i18n="extra_insurance"></label>
-                <input type="number" id="insurance_value" />
+                <div class="input-with-icon">
+                    <span class="input-icon">🛡️</span>
+                    <input type="number" id="insurance_value" placeholder="0" />
+                </div>
+            </div>
+
+            <div class="form-col">
+                <label data-i18n="period"></label>
                 <select id="insurance_type">
                     <option value="year" data-i18n="period_year"></option>
                     <option value="month" data-i18n="period_month"></option>
                     <option value="once" data-i18n="period_once"></option>
                 </select>
             </div>
+        </div>
 
-            <div class="extra-item-block">
+        <!-- ============ ROW 3 =============== -->
+        <div class="form-grid" style="margin-top: 14px;">
+            <div class="form-col">
                 <label data-i18n="extra_service"></label>
-                <input type="number" id="service_value2" />
+                <div class="input-with-icon">
+                    <span class="input-icon">🔧</span>
+                    <input type="number" id="service_value2" placeholder="0" />
+                </div>
+            </div>
+
+            <div class="form-col">
+                <label data-i18n="period"></label>
                 <select id="service_type">
                     <option value="year" data-i18n="period_year"></option>
                     <option value="month" data-i18n="period_month"></option>
                     <option value="once" data-i18n="period_once"></option>
                 </select>
             </div>
+        </div>
 
-            <div class="extra-item-block">
+        <!-- ============ ROW 4 =============== -->
+        <div class="form-grid" style="margin-top: 14px;">
+            <div class="form-col">
                 <label data-i18n="extra_other"></label>
-                <input type="number" id="other_value" />
+                <div class="input-with-icon">
+                    <span class="input-icon">➕</span>
+                    <input type="number" id="other_value" placeholder="0" />
+                </div>
+            </div>
+
+            <div class="form-col">
+                <label data-i18n="period"></label>
                 <select id="other_type">
                     <option value="year" data-i18n="period_year"></option>
                     <option value="month" data-i18n="period_month"></option>
@@ -258,6 +299,8 @@
                 </select>
             </div>
         </div>
+
+    </div>
     </section>
 
     <!-- ======================== CUSTOM EXPENSES ========================= -->
