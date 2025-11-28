@@ -79,34 +79,42 @@ h1, h2, h3 {
 }
 
 /* ============================================================
-   TOPBAR
+   TOPBAR (IMPROVED COMPACT VERSION)
    ============================================================ */
 .topbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
     background: var(--card-bg);
-    padding: 10px 14px;
+    padding: 8px 12px;
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow);
+
     position: sticky;
     top: 0;
     z-index: 20;
-    gap: 10px;
+
+    height: 50px;
     white-space: nowrap;
+    overflow: hidden;
 }
 
 .app-title {
-    font-size: clamp(1rem, 4vw, 1.3rem);
+    font-size: clamp(0.95rem, 3.5vw, 1.2rem);
     font-weight: 600;
+
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+
+    max-width: 55%; /* ключевое */
 }
 
 .topbar-controls {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     flex-shrink: 0;
 }
 
@@ -114,10 +122,18 @@ h1, h2, h3 {
     background: var(--card-bg);
     border: 1px solid var(--border);
     color: var(--text);
-    padding: 4px 8px;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border-radius: var(--radius-sm);
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1rem;
+
     transition: 0.15s ease;
     flex-shrink: 0;
 }
@@ -127,12 +143,14 @@ h1, h2, h3 {
 }
 
 .lang-select {
-    padding: 4px 8px;
+    padding: 6px 6px;
     background: var(--input-bg);
     border: 1px solid var(--input-border);
     border-radius: var(--radius-sm);
     color: var(--text);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+
+    height: 32px;
     flex-shrink: 0;
 }
 
