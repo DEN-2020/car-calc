@@ -1,99 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title data-i18n="app_title">Car Loan Calculator</title>
+<title data-i18n="app_title">Car Loan Calculator</title>
 
-    <!-- === PWA CORE === -->
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#0d6efd" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)">
-    <meta name="color-scheme" content="light dark">
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d6efd" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme:dark)">
+<meta name="color-scheme" content="light dark">
+<script>navigator.serviceWorker?.register("sw.js");</script>
 
-    <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("sw.js");
-        }
-    </script>
+<!-- iOS splash -->
+<link rel="apple-touch-startup-image" href="splash/splash-640x1136.png" media="(device-width:320px) and (device-height:568px) and (-webkit-device-pixel-ratio:2) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="splash/splash-750x1334.png" media="(device-width:375px) and (device-height:667px) and (-webkit-device-pixel-ratio:2) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="splash/splash-828x1792.png" media="(device-width:414px) and (device-height:896px) and (-webkit-device-pixel-ratio:2) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="splash/splash-1125x2436.png" media="(device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="splash/splash-1242x2688.png" media="(device-width:414px) and (device-height:896px) and (-webkit-device-pixel-ratio:3) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="splash/splash-1536x2048.png" media="(device-width:768px) and (device-height:1024px) and (-webkit-device-pixel-ratio:2) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="splash/splash-1668x2224.png" media="(device-width:834px) and (device-height:1112px) and (-webkit-device-pixel-ratio:2) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="splash/splash-1668x2388.png" media="(device-width:834px) and (device-height:1194px) and (-webkit-device-pixel-ratio:2) and (orientation:portrait)">
+<link rel="apple-touch-startup-image" href="splash/splash-2048x2732.png" media="(device-width:1024px) and (device-height:1366px) and (-webkit-device-pixel-ratio:2) and (orientation:portrait)">
 
-    <!-- iPhone 5/SE -->
-<link rel="apple-touch-startup-image" href="splash/splash-640x1136.png"
-      media="(device-width: 320px) and (device-height: 568px)
-      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<!-- Icons -->
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
 
-<!-- iPhone 6/7/8/SE2/SE3 -->
-<link rel="apple-touch-startup-image" href="splash/splash-750x1334.png"
-      media="(device-width: 375px) and (device-height: 667px)
-      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPhone XR / 11 -->
-<link rel="apple-touch-startup-image" href="splash/splash-828x1792.png"
-      media="(device-width: 414px) and (device-height: 896px)
-      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPhone X / XS / 11 Pro -->
-<link rel="apple-touch-startup-image" href="splash/splash-1125x2436.png"
-      media="(device-width: 375px) and (device-height: 812px)
-      and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-
-<!-- iPhone XS Max / 11 Pro Max -->
-<link rel="apple-touch-startup-image" href="splash/splash-1242x2688.png"
-      media="(device-width: 414px) and (device-height: 896px)
-      and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-
-<!-- iPad Mini / iPad -->
-<link rel="apple-touch-startup-image" href="splash/splash-1536x2048.png"
-      media="(device-width: 768px) and (device-height: 1024px)
-      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPad Pro 10.5 -->
-<link rel="apple-touch-startup-image" href="splash/splash-1668x2224.png"
-      media="(device-width: 834px) and (device-height: 1112px)
-      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPad Pro 11 -->
-<link rel="apple-touch-startup-image" href="splash/splash-1668x2388.png"
-      media="(device-width: 834px) and (device-height: 1194px)
-      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-<!-- iPad Pro 12.9 -->
-<link rel="apple-touch-startup-image" href="splash/splash-2048x2732.png"
-      media="(device-width: 1024px) and (device-height: 1366px)
-      and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-
-    <!-- === ICONS === -->
-    <link rel="apple-touch-icon" href="icons/icon-192.png" />
-    <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png" />
-
-    <!-- === MAIN STYLES === -->
-    <link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
 <!-- ======================== HEADER ========================= -->
-<header class="topbar">
-    <h1 class="app-title" data-i18n="app_title">Car Loan Calculator</h1>
 
-    <div class="topbar-controls">
-        <!-- Theme toggle -->
-        <button id="theme_toggle" class="icon-btn" title="Theme">🌙</button>
-
-        <!-- Language select -->
-        <select id="lang_select" class="lang-select">
-            <option value="en">EN</option>
-            <option value="ru">RU</option>
-            <option value="fi">FI</option>
-        </select>
-
-        <!-- Install PWA button -->
-        <button id="install_btn" class="icon-btn" title="Install App" data-i18n="install_app">
-            📥
-        </button>
-    </div>
-</header>
 
 <div include-html="partials/header.html"></div>
 
